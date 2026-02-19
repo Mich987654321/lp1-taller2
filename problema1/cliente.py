@@ -9,11 +9,16 @@ import socket
 #Crear un socket TCP/IP
 # AF_INET: socket de familia IPv4
 # SOCK_STREAM: socket de tipo TCP (orientado a conexión)
-client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)    
+servidor = socket.socket(socket.AF_INET, socket.SOCK_STREAM)    
 
 #Conectar el socket al servidor en la dirección y puerto especificados
 HOST = 'Localhost'
 PORT = 9000
+
+servidor.bind ((HOST, PORT))
+servidor.listen()
+print("El servidor se encuentra en la espera de conexiones")
+
 
 
 # TODO: Enviar datos al servidor (convertidos a bytes)
