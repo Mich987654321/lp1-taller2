@@ -6,39 +6,49 @@ Objetivo: Crear un servidor TCP que devuelva exactamente lo que recibe del clien
 
 import socket
 
-# TODO: Definir la dirección y puerto del servidor
+#Definir la dirección y puerto del servidor
 
-# TODO: Crear un socket TCP/IP
+HOST = 'localhost'
+PORT = 8000
+
+# Crear un socket TCP/IP
 # AF_INET: socket de familia IPv4
 # SOCK_STREAM: socket de tipo TCP (orientado a conexión)
+servidor = socket.socket(socket.AF_INET, socket.SOCK_STREAM) 
 
-# TODO: Enlazar el socket a la dirección y puerto especificados
+#Enlazar el socket a la dirección y puerto especificados
+servidor.bind((HOST, PORT))
 
-# TODO: Poner el socket en modo escucha
+# Poner el socket en modo escucha
+servidor.listen()
 # El parámetro define el número máximo de conexiones en cola
+print("Servidor a la espera de conexiones ...")
 
 # Bucle infinito para manejar múltiples conexiones (una a la vez)
 while True:
 
-    print("Servidor a la espera de conexiones ...")
-    
-    # TODO: Aceptar una conexión entrante
+ print("Servidor echo a la espera de conexiones ...")
+ conn, addr = servidor.accept()
+ print(f"Conexión realizada por {addr}")
+
+    #Aceptar una conexión entrante
     # accept() bloquea hasta que llega una conexión
     # conn: nuevo socket para comunicarse con el cliente
     # addr: dirección y puerto del cliente
     
-    print(f"Conexión realizada por {addr}")
-
-    # TODO: Recibir datos del cliente (hasta 1024 bytes)
+    #Recibir datos del cliente (hasta 1024 bytes)
+ datos = conn.recv(1024) 
+ print(f"El cliente envió: {datos.decode()}") 
     
     # Si no se reciben datos, salir del bucle
-    if not data:
+ if not datos:
         break
-
     # Mostrar los datos recibidos (en formato bytes)
-    print("Datos recibidos:", data)
+ print("Datos recibidos:", datos)
     
-    # TODO: Enviar los mismos datos de vuelta al cliente (echo)
+    #Enviar los mismos datos de vuelta al cliente (echo)
+ conn.sendall(datos)
     
-    # TODO: Cerrar la conexión con el cliente actual
-
+    #Cerrar la conexión con el cliente actual
+ conn.close() 
+ print(f"conexion culminada con {addr} cerrada")    
