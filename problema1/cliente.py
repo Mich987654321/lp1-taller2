@@ -25,7 +25,7 @@ datos = cliente.recv(1024)
 print(f"Respuesta: {datos}")
 
 #Decodificar e imprimir los datos recibidos
-print("Elcliente indica", datos.decode())
+print("El servidor indica", datos.decode())
 
 #Cerrar la conexión con el servidor
 cliente.close()

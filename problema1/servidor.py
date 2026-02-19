@@ -24,7 +24,7 @@ servidor.listen()
 print("Servidor a la espera de conexiones ...")
 
 # Aceptar una conexión entrante
-conn, addr = servidor.accept()()  
+conn, addr = servidor.accept()
 print(f"Conexión realizada por {addr}")
 # accept() bloquea hasta que llega una conexión
 # conn: nuevo socket para comunicarse con el cliente
