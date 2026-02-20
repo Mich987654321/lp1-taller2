@@ -56,8 +56,8 @@ def broadcast(message, sender_socket):
         sender_socket: Socket del cliente que envió el mensaje original
     """
     for client in clients:
-     if client != sender_socket:
-        client.send(message.encode())
+            if client != sender_socket:
+                client.send(message.encode())
     #Enviar el mensaje codificado a bytes a cada cliente
       
 
